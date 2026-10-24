@@ -1,1 +1,36 @@
+ public static void main(String[] args) {
+        
+   double average = 82.5;
+        int absences = 2;
 
+       
+        boolean meetsStandard = (average >= 75 && absences <= 3);
+        boolean meetsHonors = (average >= 90);
+        boolean passes = (average >= 75 && absences <= 3) || (average >= 90);
+
+        System.out.println("Average grade: " + average);
+        System.out.println("Absences: " + absences);
+
+        if (passes) {
+            System.out.println("Result: PASS");
+            if (meetsHonors) {
+                System.out.println("Reason: Average of " + average
+                        + " is 90 or above, so absences do not matter.");
+            } else {
+                System.out.println("Reason: Average of " + average
+                        + " is at least 75 and absences (" + absences
+                        + ") are 3 or fewer.");
+            }
+        } else {
+            System.out.println("Result: FAIL");
+            if (average < 75) {
+                System.out.println("Reason: Average of " + average
+                        + " is below the required 75, and it is under 90.");
+            } else {
+                System.out.println("Reason: Average of " + average
+                        + " is at least 75, but absences (" + absences
+                        + ") exceed 3, and the average is under 90.");
+            }
+        }
+    }
+}
