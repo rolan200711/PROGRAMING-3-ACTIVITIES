@@ -1,1 +1,36 @@
+public static void main(String[] args) {
+        
+       double balance = 1000.00;
 
+        System.out.println("Starting Balance: " + balance);
+
+        balance += 200.00;
+        System.out.println("After adding 200: " + balance);
+
+        balance *= 1.05;
+        System.out.println("After 5% growth: " + balance);
+
+        balance += 50.00;
+        System.out.println("After adding 50: " + balance);
+
+        balance *= 1.10;
+        System.out.printf("After 10%% growth: %.2f%n", balance);
+
+        int count = 5;
+
+        System.out.println("\nPostfix Increment:");
+        System.out.println("Result of count++: " + count++);
+        System.out.println("Count after count++: " + count);
+        
+        count = 5;
+
+        System.out.println("\nPrefix Increment:");
+        System.out.println("Result of ++count: " + ++count);
+        System.out.println("Count after ++count: " + count);
+        // count++ returns the original value (5), then increments count to 6.
+        // ++count increments count first to 6, then returns the updated value (6).
+        // Therefore, count++ prints 5 while ++count prints 6.
+
+    }
+}
+  
