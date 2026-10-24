@@ -1,1 +1,30 @@
+public class Practice2 {
+    public static void main(String[] args) {
+         
+               
+        double centimeters = 256.75;
 
+        // Explicit casting to get the whole meters
+        int wholeMeters = (int) (centimeters / 100);   // 2.5675 -> 2
+        double remainingCm = centimeters - (wholeMeters * 100);  // 256.75 - 200 = 56.75
+
+        System.out.println(centimeters + " cm = " + wholeMeters
+                + " m at " + remainingCm + " cm");
+
+        //Implicit widening: int -> double
+        int whole = 42;
+        double widened = whole;
+        // No cast is needed because the double is wider than int
+        // We will hold double all int value
+        // 42 will be 42.0
+        System.out.println("Widening: " + widened);
+
+        //Explicit narrowing: double -> int
+        double precise = 9.99;
+        int narrowed = (int) precise;
+        // Need a (int) cast because there is possible lost data.
+        System.out.println("Narrowing: " + narrowed);
+        
+        
+    }
+}
