@@ -1,1 +1,23 @@
+// Practice1: Calculates the total cost of an order and prints a simple receipt
+public class Practice1 {
+    public static void main(String[] args) {
 
+        // Variables for the order details
+        int quantity = 3;           // number of items bought (whole number)
+        double price = 19.99;       // price per item (decimal number)
+        String store = "Rene Store"; // store name (reference type)
+
+        // Calculate the total cost: quantity times price per item
+        double cost = quantity * price;
+
+        // Print the receipt
+        System.out.println("     Receipt     ");
+        System.out.println("Store: " + store);
+        System.out.println("Quantity: " + quantity);
+
+        // printf formats output: %.2f shows 2 decimal places, %n starts a new line
+        System.out.printf("Price: $%.2f%n", price);
+        System.out.printf("Total:   $%.2f%n", cost);
+
+    }
+}
