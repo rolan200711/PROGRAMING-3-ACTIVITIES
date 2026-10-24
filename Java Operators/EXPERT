@@ -1,1 +1,30 @@
+public static void main(String[] args) {
+        
+        int a = 5, b = 3;
+        boolean r1 = a + b * 2 > 10 && a - b < 3;
+        System.out.println("Puzzle 1: " + r1);
 
+        int x = 4;
+        int r2 = x++ + ++x * 2;
+        System.out.println("Puzzle 2: r2 = " + r2 + ", x = " + x);
+
+        boolean r3 = !(5 > 3) || 10 % 4 == 2 && 7 / 2 == 3;
+        System.out.println("Puzzle 3: " + r3);
+
+        int y = 10;
+        boolean r4 = y-- > 10 || --y < 9;
+        System.out.println("Puzzle 4: " + r4 + ", y = " + y);
+
+        int z = 0;
+        boolean r5 = z != 0 && 10 / z > 1;
+        System.out.println("Puzzle 5: " + r5);
+
+        boolean r6 = 1 + 2 == 3 == true;
+        System.out.println("Puzzle 6: " + r6);
+
+        int m = 2;
+        int r7 = m + m++ * m--;
+        System.out.println("Puzzle 7: r7 = " + r7 + ", m = " + m);
+    }
+}
+  
