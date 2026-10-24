@@ -1,1 +1,22 @@
+// Practice1: Declares variables describing a person and prints a simple profile
+public class Practice1 {
+    public static void main(String[] args) {
 
+        // Reference-type variable (String) for the full name
+        String name = "Rolan Cuevas";
+
+        // Primitive-type variables, each initialized when declared
+        int age = 19;           // whole number for age
+        double height = 5.5;    // decimal number for height (in feet)
+        char initial = 'A';     // single character for the initial
+        boolean alive = true;   // true/false value for status
+
+        // Print each value on its own line with a label
+        System.out.println("Full Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Heigt: " + height);
+        System.out.println("Initial: " + initial);
+        System.out.println("Alive?:" + alive);
+
+    }
+}
