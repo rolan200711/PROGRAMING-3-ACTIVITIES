@@ -1,0 +1,206 @@
+ static final int DAMAGED = -1;
+    static final int CRITICAL_THRESHOLD = 5;
+    static final int MAX_SHELF_CAPACITY = 100;
+    
+    public static void main(String[] args) {
+        
+        int[][] warehouse = {
+            { 42, 18,  -1, 60 },
+            { 25,  3,  77, 12 },
+            { -1, 50,   8, 91 }
+        };
+ 
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+ 
+        
+        do {
+            printMenu();
+            choice = readInt(scanner, "Choose an option: ");
+ 
+            switch (choice) {
+                case 1:
+                    displayWarehouse(warehouse);
+                    break;
+                case 2:
+                    System.out.println("Total inventory (damaged shelves skipped): "
+                            + totalInventory(warehouse));
+                    break;
+                case 3:
+                    int[] low = findFirstCriticallyLow(warehouse);
+                    if (low == null) {
+                        System.out.println("No critically low shelves found.");
+                    } else {
+                        System.out.printf("First critically low shelf: row %d, col %d (count = %d)%n",
+                                low[0], low[1], warehouse[low[0]][low[1]]);
+                    }
+                    break;
+                case 4:
+                    boolean restocked = restockShelf(warehouse, scanner);
+                    System.out.println(restocked ? "Restock complete." : "Restock cancelled.");
+                    break;
+                case 5:
+                    System.out.println("Exiting scanner. Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option. Please choose 1-5.");
+            }
+        } while (choice != 5);
+ 
+        scanner.close();
+    }
+ 
+    static void printMenu() {
+        System.out.println("\n=== Warehouse Inventory Scanner ===");
+        System.out.println("1. Display warehouse");
+        System.out.println("2. Total inventory");
+        System.out.println("3. Find first critically low shelf");
+        System.out.println("4. Restock a shelf");
+        System.out.println("5. Exit");
+    }
+ 
+    static void displayWarehouse(int[][] warehouse) {
+        System.out.println("\n(-1 = damaged shelf)");
+        for (int r = 0; r < warehouse.length; r++) {
+            System.out.printf("Row %d: ", r);
+            for (int c = 0; c < warehouse[r].length; c++) {
+                System.out.printf("%5d", warehouse[r][c]);
+            }
+            System.out.println();
+        }
+    }
+ 
+    
+    static int totalInventory(int[][] warehouse) {
+        int total = 0;
+        for (int r = 0; r < warehouse.length; r++) {
+            for (int c = 0; c < warehouse[r].length; c++) {
+                if (warehouse[r][c] == DAMAGED) {
+                    continue; // skip this shelf, move to the next
+                }
+                total += warehouse[r][c];
+            }
+        }
+        return total;
+    }
+ 
+    
+    static int[] findFirstCriticallyLow(int[][] warehouse) {
+        int foundRow = -1;
+        int foundCol = -1;
+ 
+        search:
+        for (int r = 0; r < warehouse.length; r++) {
+            for (int c = 0; c < warehouse[r].length; c++) {
+                int count = warehouse[r][c];
+                if (count != DAMAGED && count < CRITICAL_THRESHOLD) {
+                    foundRow = r;
+                    foundCol = c;
+                    break search; // exits the outer loop too
+                }
+            }
+        }
+ 
+        return (foundRow == -1) ? null : new int[] { foundRow, foundCol };
+    }
+ 
+   
+    static boolean restockShelf(int[][] warehouse, Scanner scanner) {
+        while (true) {
+            int row = readInt(scanner, "Row to restock (or -1 to cancel): ");
+            if (row == -1) {
+                return false;
+            }
+            int col = readInt(scanner, "Column to restock: ");
+ 
+            if (row < 0 || row >= warehouse.length || col < 0 || col >= warehouse[0].length) {
+                System.out.println("That shelf doesn't exist. Try again.");
+                continue;
+            }
+            if (warehouse[row][col] == DAMAGED) {
+                System.out.println("That shelf is damaged and can't be restocked.");
+                continue;
+            }
+ 
+            int room = MAX_SHELF_CAPACITY - warehouse[row][col];
+            int amount = readInt(scanner, "Units to add (1-" + room + "): ");
+            if (amount < 1 || amount > room) {
+                System.out.println("Invalid amount. Try again.");
+                continue;
+            }
+ 
+            warehouse[row][col] += amount;
+            System.out.printf("Shelf (%d, %d) now holds %d units.%n", row, col, warehouse[row][col]);
+            return true; // valid restock done, leave the method
+        }
+    }
+ 
+    
+    static int readInt(Scanner scanner, String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextInt()) {
+            System.out.println("Please enter a whole number.");
+            scanner.next(); // discard bad token
+            System.out.print(prompt);
+        }
+        return scanner.nextInt();
+    }
+}
+
+
+
+
+
+=== Warehouse Inventory Scanner ===
+1. Display warehouse
+2. Total inventory
+3. Find first critically low shelf
+4. Restock a shelf
+5. Exit
+Choose an option: 1
+
+(-1 = damaged shelf)
+Row 0:    42   18   -1   60
+Row 1:    25    3   77   12
+Row 2:    -1   50    8   91
+
+=== Warehouse Inventory Scanner ===
+1. Display warehouse
+2. Total inventory
+3. Find first critically low shelf
+4. Restock a shelf
+5. Exit
+Choose an option: 2
+Total inventory (damaged shelves skipped): 386
+
+=== Warehouse Inventory Scanner ===
+1. Display warehouse
+2. Total inventory
+3. Find first critically low shelf
+4. Restock a shelf
+5. Exit
+Choose an option: 3
+First critically low shelf: row 1, col 1 (count = 3)
+
+=== Warehouse Inventory Scanner ===
+1. Display warehouse
+2. Total inventory
+3. Find first critically low shelf
+4. Restock a shelf
+5. Exit
+Choose an option: 4
+Row to restock (or -1 to cancel): 1
+Column to restock: 1
+Units to add (1-97): 1
+Shelf (1, 1) now holds 4 units.
+Restock complete.
+
+=== Warehouse Inventory Scanner ===
+1. Display warehouse
+2. Total inventory
+3. Find first critically low shelf
+4. Restock a shelf
+5. Exit
+Choose an option: 5
+Exiting scanner. Goodbye!
+BUILD SUCCESSFUL (total time: 1 minute 42 seconds)
