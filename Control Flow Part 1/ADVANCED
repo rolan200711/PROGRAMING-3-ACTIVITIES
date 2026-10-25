@@ -1,1 +1,61 @@
+ public static void main(String[] args) {
+        
+             Scanner scanner = new Scanner(System.in);
+
+      //the acc data
+        final String CORRECT_USERNAME = "RolanCuevas123";
+        final String CORRECT_PASSWORD = "Cuevas123";
+        final boolean ACCOUNT_LOCKED = false;
+      //enter the username
+        System.out.print("Enter username: ");
+        String username = scanner.nextLine().trim();
+      //enter password
+        System.out.print("Enter password: ");
+        String password = scanner.nextLine();
+
+     
+        if (username.equals(CORRECT_USERNAME)) {
+
+           
+            if (password.equals(CORRECT_PASSWORD)) {
+
+                
+                if (!ACCOUNT_LOCKED) {
+                    System.out.println("Login successful! Welcome, " + username + ".");
+                } else {
+                    System.out.println("Login failed: Your account is locked. Contact support.");
+                }
+
+            } else {
+                System.out.println("Login failed: Incorrect password.");
+            }
+
+        } else {
+            System.out.println("Login failed: Username not found.");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+Wrong user:
+Enter username: ROlan
+Enter password: Cuevas123
+Login failed: Username not found.
+BUILD SUCCESSFUL (total time: 1 minute 1 second)
+
+Wrong password
+Enter username: RolanCuevas123
+Enter password: rolan
+Login failed: Incorrect password.
+BUILD SUCCESSFUL (total time: 14 seconds)
+
+Wrong user and password
+Enter username: rola
+Enter password: rolan
+Login failed: Username not found.
+BUILD SUCCESSFUL (total time: 7 seconds)
+
 
