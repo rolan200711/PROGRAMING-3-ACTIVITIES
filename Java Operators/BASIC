@@ -35,3 +35,14 @@ public class Practice1 {
         scanner.close();
     }
 }
+
+
+Enter the first integer: 12
+Enter the second integer: 31
+
+Addition: 43
+Subtraction: -19
+Multiplication: 372
+Division: 0
+Remainder: 12
+BUILD SUCCESSFUL (total time: 5 seconds)
