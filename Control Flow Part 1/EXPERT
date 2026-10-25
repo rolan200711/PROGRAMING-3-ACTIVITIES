@@ -1,1 +1,116 @@
-
+//account 
+    private static final String USER = "lan";
+    private static final String PIN = "1234";
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        System.out.print("Enter username: ");
+        String username = sc.nextLine().trim();
+        System.out.print("Enter PIN: ");
+        String pin = sc.nextLine().trim();
+ 
+     //nested if user anf pin
+        if (username.equals(USER)) {
+            if (pin.matches("\\d{4}")) {
+                if (pin.equals(PIN)) {
+                    System.out.println("Authentication successful.\n");
+                } else {
+                    System.out.println("DENIED: Incorrect PIN.");
+                    return;
+                }
+            } else {
+                System.out.println("DENIED: PIN must be exactly 4 digits.");
+                return;
+            }
+        } else {
+            System.out.println("DENIED: Unknown username.");
+            return;
+        }
+ 
+        //transaction input
+        System.out.print("Current account balance: ");
+        double balance = sc.nextDouble();
+        System.out.print("Withdrawal amount: ");
+        double amount = sc.nextDouble();
+ 
+        //else if ladder tier from balance
+        String tier;
+        if (balance < 1000) {
+            tier = "Bronze";
+        } else if (balance < 10000) {
+            tier = "Silver";
+        } else if (balance < 50000) {
+            tier = "Gold";
+        } else {
+            tier = "Platinum";
+        }
+ 
+        // swith fee percentage and daily limmit
+        double feePercent;
+        double dailyLimit;
+        switch (tier) {
+            case "Bronze":
+                feePercent = 2.0;
+                dailyLimit = 200;
+                break;
+            case "Silver":
+                feePercent = 1.5;
+                dailyLimit = 500;
+                break;
+            case "Gold":
+                feePercent = 1.0;
+                dailyLimit = 1000;
+                break;
+            case "Platinum":
+                feePercent = 0.0;
+                dailyLimit = 5000;
+                break;
+            default:
+                feePercent = 0.0;
+                dailyLimit = 0;
+                break;
+        }
+ 
+        double fee = amount * feePercent / 100.0;
+        double totalDebit = amount + fee;
+ 
+        
+        boolean approved = false;
+        String reason;
+ 
+        if (amount > 0) {
+            if (totalDebit <= balance) {
+                if (amount <= dailyLimit) {
+                    approved = true;
+                    reason = "All checks passed.";
+                } else {
+                    reason = String.format("Amount $%.2f exceeds the %s daily limit of $%.2f.",
+                            amount, tier, dailyLimit);
+                }
+            } else {
+                reason = String.format("Insufficient balance. Needed $%.2f (amount + fee) but only $%.2f available.",
+                        totalDebit, balance);
+            }
+        } else {
+            reason = "Withdrawal amount must be greater than zero.";
+        }
+ 
+        // approve or deny using if else
+        System.out.println("\n--- Transaction Summary ---");
+        System.out.println("Tier:         " + tier);
+        System.out.printf("Fee:          %.1f%% ($%.2f)%n", feePercent, fee);
+        System.out.printf("Daily limit:  $%.2f%n", dailyLimit);
+        System.out.printf("Total debit:  $%.2f%n", totalDebit);
+ 
+        if (approved) {
+            System.out.println("\nSTATUS: APPROVED");
+            System.out.printf("New balance: $%.2f%n", balance - totalDebit);
+        } else {
+            System.out.println("\nSTATUS: DENIED");
+            System.out.println("Reason: " + reason);
+        }
+ 
+        sc.close();
+    }
+}
