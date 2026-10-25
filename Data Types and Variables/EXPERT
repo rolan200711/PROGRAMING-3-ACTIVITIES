@@ -1,1 +1,145 @@
+public static void main(String[] args) {
+        
+             part1ByteOverflow();
+        part2StringComparison();
+        part3SharedArrayReference();
+    }
+
+    static void part1ByteOverflow() {
+        System.out.println("=== PART 1: Byte Overflow ===");
+
+        byte b = Byte.MAX_VALUE;           // 127
+        System.out.println("Before increment: b = " + b);
+
+        b++;                             
+        System.out.println("After b++:        b = " + b);   
+
+      
+        short s = Short.MAX_VALUE;         
+        System.out.println("Before increment: s = " + s);
+        s++;
+        System.out.println("After s++:        s = " + s);   
+
+    
+        byte low = Byte.MIN_VALUE;         
+        low--;
+        System.out.println("MIN_VALUE - 1:    low = " + low); 
+
+        
+        System.out.println();
+    }
+
+    
+    static void part2StringComparison() {
+        System.out.println("=== PART 2: String Comparison ===");
+
+        String a = new String("hello");    
+        String b = new String("hello");    
+        String c = "hello";               
+
+        System.out.println("a = new String(\"hello\")");
+        System.out.println("b = new String(\"hello\")");
+        System.out.println("c = \"hello\" (literal)\n");
+
+
+
+   
+        System.out.println("a == b      : " + (a == b));
+
+      
+        System.out.println("a == c      : " + (a == c));
+
+     
+        System.out.println("b == c      : " + (b == c));
+
+        System.out.println();
+
+        
+     
+        System.out.println("a.equals(b) : " + a.equals(b));
+        System.out.println("a.equals(c) : " + a.equals(c));
+        System.out.println("b.equals(c) : " + b.equals(c));
+
+        System.out.println();
+
+     
+        String d = "hello";
+       
+        System.out.println("c == d (two literals): " + (c == d));
+
+        
+        System.out.println("a.intern() == c      : " + (a.intern() == c));
+        System.out.println();
+    }
+
+    
+    static void part3SharedArrayReference() {
+        System.out.println("=== PART 3: Shared Array Reference ===");
+
+        int[] original = {1, 2, 3, 4, 5};
+        int[] alias = original;           
+
+        System.out.println("Before modification:");
+        System.out.println("original = " + java.util.Arrays.toString(original));
+        System.out.println("alias    = " + java.util.Arrays.toString(alias));
+
+        alias[0] = 99;                     
+
+        System.out.println("\nAfter alias[0] = 99:");
+        System.out.println("original = " + java.util.Arrays.toString(original)); 
+        System.out.println("alias    = " + java.util.Arrays.toString(alias));
+        System.out.println("original == alias: " + (original == alias)); 
+        
+                
+        int[] copy = original.clone();
+        copy[1] = -1;
+        System.out.println("\nAfter clone and copy[1] = -1:");
+        System.out.println("original = " + java.util.Arrays.toString(original)); // unchanged
+        System.out.println("copy     = " + java.util.Arrays.toString(copy));
+        System.out.println("original == copy: " + (original == copy)); // false
+    }
+}
+
+
+
+
+run:
+=== PART 1: Byte Overflow ===
+Before increment: b = 127
+After b++:        b = -128
+Before increment: s = 32767
+After s++:        s = -32768
+MIN_VALUE - 1:    low = 127
+
+=== PART 2: String Comparison ===
+a = new String("hello")
+b = new String("hello")
+c = "hello" (literal)
+
+a == b      : false
+a == c      : false
+b == c      : false
+
+a.equals(b) : true
+a.equals(c) : true
+b.equals(c) : true
+
+c == d (two literals): true
+a.intern() == c      : true
+
+=== PART 3: Shared Array Reference ===
+Before modification:
+original = [1, 2, 3, 4, 5]
+alias    = [1, 2, 3, 4, 5]
+
+After alias[0] = 99:
+original = [99, 2, 3, 4, 5]
+alias    = [99, 2, 3, 4, 5]
+original == alias: true
+
+After clone and copy[1] = -1:
+original = [99, 2, 3, 4, 5]
+copy     = [99, -1, 3, 4, 5]
+original == copy: false
+BUILD SUCCESSFUL (total time: 0 seconds)
 
