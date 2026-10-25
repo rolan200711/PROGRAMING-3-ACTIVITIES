@@ -1,0 +1,38 @@
+public static int linearSearch(int[] data, int target) {
+        for (int i = 0; i < data.length; i++) {
+            if (data[i] == target) {
+                return i;
+            }
+        }
+        return -1;
+    }
+        
+    public static void main(String[] args) {
+        
+            int[] scores = {88, 72, 95, 60, 81, 77, 95, 69};
+        int target = 81;
+
+       
+        int index = linearSearch(scores, target);
+        if (index != -1) {
+            System.out.println("Target " + target + " found at index " + index);
+        } else {
+            System.out.println("Target " + target + " was not found");
+        }
+
+       
+        int[] sortedScores = Arrays.copyOf(scores, scores.length);
+        Arrays.sort(sortedScores);
+
+       
+        System.out.println("Original: " + Arrays.toString(scores));
+        System.out.println("Sorted:   " + Arrays.toString(sortedScores));
+    }
+}
+
+
+
+Target 81 found at index 4
+Original: [88, 72, 95, 60, 81, 77, 95, 69]
+Sorted:   [60, 69, 72, 77, 81, 88, 95, 95]
+BUILD SUCCESSFUL (total time: 0 seconds)
