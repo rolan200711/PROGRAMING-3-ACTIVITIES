@@ -1,1 +1,28 @@
+ public static void main(String[] args) {
+        
+               double purchaseAmount = 275.00;
+        double discountPercent;
+        String tier;
 
+        if (purchaseAmount >= 500) {
+            discountPercent = 15;
+            tier = "Platinum";
+        } else if (purchaseAmount >= 250) {
+            discountPercent = 10;
+            tier = "Gold";
+        } else if (purchaseAmount >= 100) {
+            discountPercent = 5;
+            tier = "Silver";
+        } else {
+            discountPercent = 0;
+            tier = "Standard";
+        }
+
+        double discountAmount = purchaseAmount * (discountPercent / 100);
+        double finalPrice = purchaseAmount - discountAmount;
+
+        System.out.println("Purchase Amount: $" + purchaseAmount);
+        System.out.println("Discount Tier: " + tier + " (" + discountPercent + "% off)");
+        System.out.printf("Final Price: $%.2f%n", finalPrice);
+    }
+}
