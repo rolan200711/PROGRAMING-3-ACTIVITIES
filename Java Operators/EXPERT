@@ -28,3 +28,13 @@ public static void main(String[] args) {
     }
 }
   
+
+
+Puzzle 1: true
+Puzzle 2: r2 = 16, x = 6
+Puzzle 3: true
+Puzzle 4: true, y = 8
+Puzzle 5: false
+Puzzle 6: true
+Puzzle 7: r7 = 8, m = 2
+BUILD SUCCESSFUL (total time: 0 seconds)
