@@ -1,0 +1,37 @@
+ public static void main(String[] args) {
+        
+            int[] scores = {85, 92, 78, 65, 99, 88, 73, 90, 81, 70};
+
+        int sum = 0;
+        int highest = scores[0];
+        int lowest = scores[0];
+
+        for (int i = 0; i < scores.length; i++) {
+            sum += scores[i];
+
+            if (scores[i] > highest) {
+                highest = scores[i];
+            }
+            if (scores[i] < lowest) {
+                lowest = scores[i];
+            }
+        }
+
+        double average = (double) sum / scores.length;
+
+        System.out.println("Number of Scores: " + scores.length);
+        System.out.println("Sum of Scores:    " + sum);
+        System.out.printf("Average Score:    %.2f%n", average);
+        System.out.println("Highest Score:    " + highest);
+        System.out.println("Lowest Score:     " + lowest);
+    }
+}
+
+
+
+Number of Scores: 10
+Sum of Scores:    821
+Average Score:    82.10
+Highest Score:    99
+Lowest Score:     65
+BUILD SUCCESSFUL (total time: 0 seconds)
