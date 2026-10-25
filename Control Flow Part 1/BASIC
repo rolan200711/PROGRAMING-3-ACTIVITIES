@@ -1,6 +1,9 @@
-public static void main(String[] args) {
+ public static void main(String[] args) {
         
-            int score = 75;
+         Scanner scanner = new Scanner(System.in);
+            
+            System.out.print("Enter Score: ");
+            int score = scanner.nextInt();
 
         if (score >= 60) {
             System.out.println("PASSED");
@@ -9,3 +12,14 @@ public static void main(String[] args) {
         }
     }
 }
+
+
+Passed:
+Enter Score: 60
+PASSED
+BUILD SUCCESSFUL (total time: 4 seconds)
+
+Failed:
+Enter Score: 50
+FAILED
+BUILD SUCCESSFUL (total time: 7 seconds)
