@@ -34,3 +34,11 @@
         }
     }
 }
+
+
+
+Average grade: 82.5
+Absences: 2
+Result: PASS
+Reason: Average of 82.5 is at least 75 and absences (2) are 3 or fewer.
+BUILD SUCCESSFUL (total time: 0 seconds)
