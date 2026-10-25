@@ -1,8 +1,6 @@
-// Practice1: Declares variables describing a person and prints a simple profile
-public class Practice1 {
-    public static void main(String[] args) {
-
-        // Reference-type variable (String) for the full name
+ public static void main(String[] args) {
+        
+                 // Reference-type variable (String) for the full name
         String name = "Rolan Cuevas";
 
         // Primitive-type variables, each initialized when declared
@@ -20,3 +18,11 @@ public class Practice1 {
 
     }
 }
+
+
+Full Name: Rolan Cuevas
+Age: 19
+Heigt: 5.5
+Initial: A
+Alive?:true
+BUILD SUCCESSFUL (total time: 0 seconds)
