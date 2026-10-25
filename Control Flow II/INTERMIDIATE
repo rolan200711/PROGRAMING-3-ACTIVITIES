@@ -15,3 +15,15 @@ public static void main(String[] args) {
         scanner.close();
     }
 }
+
+
+
+Enter integers to add (enter -1 to stop):
+1
+2
+3
+4
+5
+-1
+Final total: 15
+BUILD SUCCESSFUL (total time: 10 seconds)
