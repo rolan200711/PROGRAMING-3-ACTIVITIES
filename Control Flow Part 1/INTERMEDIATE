@@ -1,28 +1,54 @@
- public static void main(String[] args) {
+public static void main(String[] args) {
         
-               double purchaseAmount = 275.00;
-        double discountPercent;
-        String tier;
+         Scanner scanner = new Scanner(System.in);
 
-        if (purchaseAmount >= 500) {
-            discountPercent = 15;
-            tier = "Platinum";
-        } else if (purchaseAmount >= 250) {
-            discountPercent = 10;
-            tier = "Gold";
-        } else if (purchaseAmount >= 100) {
-            discountPercent = 5;
-            tier = "Silver";
-        } else {
-            discountPercent = 0;
-            tier = "Standard";
-        }
+        System.out.print("Enter purchase amount: $");
+        double purchaseAmount = scanner.nextDouble();
+
+        System.out.print("Enter discount percent: ");
+        double discountPercent = scanner.nextDouble();
 
         double discountAmount = purchaseAmount * (discountPercent / 100);
         double finalPrice = purchaseAmount - discountAmount;
 
-        System.out.println("Purchase Amount: $" + purchaseAmount);
-        System.out.println("Discount Tier: " + tier + " (" + discountPercent + "% off)");
+        System.out.printf("Purchase Amount: $%.2f%n", purchaseAmount);
+        System.out.printf("Discount: %.1f%% (-$%.2f)%n", discountPercent, discountAmount);
         System.out.printf("Final Price: $%.2f%n", finalPrice);
+
+        scanner.close();
     }
 }
+
+OUTPUT:
+
+0% discount:
+Enter purchase amount: $123
+Enter discount percent: 0
+Purchase Amount: $123.00
+Discount: 0.0% (-$0.00)
+Final Price: $123.00
+BUILD SUCCESSFUL (total time: 6 seconds)
+
+5% discount:
+Enter purchase amount: $123
+Enter discount percent: 5
+Purchase Amount: $123.00
+Discount: 5.0% (-$6.15)
+Final Price: $116.85
+BUILD SUCCESSFUL (total time: 8 seconds)
+
+10% discount:
+Enter purchase amount: $123
+Enter discount percent: 10
+Purchase Amount: $123.00
+Discount: 10.0% (-$12.30)
+Final Price: $110.70
+BUILD SUCCESSFUL (total time: 10 seconds)
+
+15% discount:
+Enter purchase amount: $123
+Enter discount percent: 15
+Purchase Amount: $123.00
+Discount: 15.0% (-$18.45)
+Final Price: $104.55
+BUILD SUCCESSFUL (total time: 7 seconds)
