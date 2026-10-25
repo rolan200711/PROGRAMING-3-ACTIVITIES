@@ -34,3 +34,17 @@ public static void main(String[] args) {
     }
 }
   
+Starting Balance: 1000.0
+After adding 200: 1200.0
+After 5% growth: 1260.0
+After adding 50: 1310.0
+After 10% growth: 1441.00
+
+Postfix Increment:
+Result of count++: 5
+Count after count++: 6
+
+Prefix Increment:
+Result of ++count: 6
+Count after ++count: 6
+BUILD SUCCESSFUL (total time: 0 seconds)
